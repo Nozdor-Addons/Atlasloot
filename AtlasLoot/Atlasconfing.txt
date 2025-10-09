@@ -1,0 +1,16 @@
+loottables.en.lua
+constants.ru
+
+
+patch-ruRU-c.mpq//картинки
+patch-ruRU-i.mpq//лут
+atlasStoradge иконки 
+
+INV_Chicken2_White.blp	
+
+
+TextParsing.lua//добавление картинок из бд и имена
+
+core// atlasloot изменение версии
+
+поменять txt на at
