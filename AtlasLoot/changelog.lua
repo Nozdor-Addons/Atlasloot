@@ -1,6 +1,7 @@
 AtlasLootVersionsList = {}
 
 AtlasLootVersionsList[1] = "09.09.25"
+AtlasLootVersionsList[2] = "13.10.25"
 
 local GREY = "|cff999999";
 local RED = "|cffff0000";
@@ -48,6 +49,10 @@ text:SetText(WHITE..
 elseif x == 2 then
 text:SetText(WHITE..
 "- Вневременной остров".."\n\n"
+)
+elseif x == 3 then
+text:SetText(WHITE..
+"- Изменение фильтра".."\n\n"
 )
 end
 end

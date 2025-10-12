@@ -2442,42 +2442,10 @@
 					</Frames>
 				<Layers>
 					<Layer level="ARTWORK">
-						<FontString inherits="GameFontNormal" text="Ilvl от">
-								<Anchors>
-									<Anchor point="TOPLEFT" >
-										<Offset>
-											<AbsDimension x="15" y="-110"/>
-										</Offset>
-									</Anchor>
-								</Anchors>
-						</FontString>
-						<FontString inherits="GameFontNormal" text="до">
-								<Anchors>
-									<Anchor point="TOPLEFT" >
-										<Offset>
-											<AbsDimension x="85" y="-110"/>
-										</Offset>
-									</Anchor>
-								</Anchors>
-						</FontString>
-						<FontString inherits="GameFontNormal" text="lvl от">
-							<Anchors>
-								<Anchor point="TOPLEFT" >
-									<Offset>
-										<AbsDimension x="150" y="-110"/>
-									</Offset>
-								</Anchor>
-							</Anchors>
-						</FontString>
-						<FontString inherits="GameFontNormal" text="до">
-							<Anchors>
-								<Anchor point="TOPLEFT" >
-									<Offset>
-										<AbsDimension x="215" y="-110"/>
-									</Offset>
-								</Anchor>
-							</Anchors>
-						</FontString>
+						
+						
+						
+						
 					</Layer>
 				</Layers>			
 			</Frame>

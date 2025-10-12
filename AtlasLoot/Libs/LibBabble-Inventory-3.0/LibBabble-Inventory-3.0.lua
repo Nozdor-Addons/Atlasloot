@@ -943,6 +943,7 @@ elseif GAME_LOCALE == "ruRU" then
 	Gun = "Огнестрельное",
 	Guns = "Огнестрельное",
 	Hands = "Кисти рук",
+	Finger = "Кольцо",
 	Head = "Голова",
 	["Held in Off-Hand"] = "Левая рука",
 	Herb = "Трава",

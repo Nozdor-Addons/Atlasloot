@@ -2,7 +2,7 @@
 ## Title: AtlasLoot
 ## Notes: Shows the possible loot from the bosses
 ## Author: Hegarol(Создатель аддона). Copperfield, Sanguinius,Альтруист(Адаптация под Nozdor.com)
-## Version: 20.36
+## Version: 20.37
 ## X-eMail:
 ## X-Credits: Mysterium, за модификацию Аддона 
 ## X-Category: Карта
@@ -26,7 +26,7 @@
 ## SavedVariables: AtlasLootOptions, AtlasLootDB, AtlasLootWishList, AtlasLootFrameLock, AtlasLootFrameLockPos,AtlasLootNeedUprate
 ## SavedVariablesPerCharacter: AtlasLootCharDB, AtlasLootFilterDB
 ## OptionalDeps: Alphamap, LootLink, ItemSync, DewdropLib, FuBarPlugin-3.0, FuBar, Ace3, LibBabble-Boss-3.0, LibBabble-Faction-3.0, LibBabble-Inventory-3.0, LibBabble-Zone-3.0
-## X-Curse-Packaged-Version: 09.09.25 от Альтруист
+## X-Curse-Packaged-Version: 13.10.25 от Альтруист
 ## X-Curse-Project-Name: Atlasloot Enhanced
 ## X-Curse-Project-ID: atlasloot-enhanced
 ## X-Curse-Repository-ID: wow/atlasloot-enhanced/mainline
