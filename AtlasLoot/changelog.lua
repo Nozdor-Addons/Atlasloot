@@ -2,6 +2,7 @@ AtlasLootVersionsList = {}
 
 AtlasLootVersionsList[1] = "09.09.25"
 AtlasLootVersionsList[2] = "13.10.25"
+AtlasLootVersionsList[3] = "18.10.25"
 
 local GREY = "|cff999999";
 local RED = "|cffff0000";
@@ -53,6 +54,10 @@ text:SetText(WHITE..
 elseif x == 3 then
 text:SetText(WHITE..
 "- Изменение фильтра".."\n\n"
+)
+elseif x == 4 then
+text:SetText(WHITE..
+"- Лут с Всадника без головы (Мировой босс)".."\n\n"
 )
 end
 end

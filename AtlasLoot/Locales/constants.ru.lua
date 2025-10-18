@@ -1631,7 +1631,9 @@ if AL then
     AL["Templars"] = "Храмовники";
     AL["Dukes"] = "Герцоги";
     AL["High Council"] = "Верховный советник";
-    AL["Headless Horseman"] = "Всадника без головы";
+    AL["Headless Horseman"] = "Всадник без головы";
+    AL["Headless HorsemanWB"] = "Всадник без головы (мировой босс)";
+    AL["HeadlessHorsemanWBTMOG"] = "Всадник без головы (трансмог)";
     AL["Barleybrew Brewery"] = "Ячменевское Тчали";
     AL["Thunderbrew Brewery"] = "Грозовар Тчали";
     AL["Gordok Brewery"] = "Гордок Тчали";

@@ -1300,6 +1300,8 @@ end
 	AtlasLoot_TableNames["Halloween1"] = { AL["Hallow's End"], "AtlasLootWorldEvents" };
 	AtlasLoot_TableNames["Halloween2"] = { AL["Hallow's End"], "AtlasLootWorldEvents" };
 	AtlasLoot_TableNames["HeadlessHorseman"] = { AL["Headless Horseman"], "AtlasLootWorldEvents" };
+	AtlasLoot_TableNames["HeadlessHorsemanWB"] = { AL["Headless HorsemanWB"], "AtlasLootWorldEvents" };
+	AtlasLoot_TableNames["HeadlessHorsemanWBTMOG"] = { AL["HeadlessHorsemanWBTMOG"], "AtlasLootWorldEvents" };
   --- Harvest Festival
 	AtlasLoot_TableNames["HarvestFestival"] = { AL["Harvest Festival"], "AtlasLootWorldEvents" };
   --- Love is in the Air
