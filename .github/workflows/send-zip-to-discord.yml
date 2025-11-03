@@ -50,7 +50,7 @@ jobs:
           COMMIT_URL="https://github.com/${GITHUB_REPOSITORY}/commit/${GITHUB_SHA}"
           BRANCH="${GITHUB_REF_NAME}"
           curl -s -X POST \
-            -F "content=🟢 Новый коммит в ${GITHUB_REPOSITORY} (${BRANCH}): <${COMMIT_URL}>%0AАрхив: $ZIP_NAME" \
+            -F "content=🟢 Новый коммит в ${GITHUB_REPOSITORY} (${BRANCH}): <${COMMIT_URL}> \
             -F "file=@$ZIP_NAME" \
             "$WEBHOOK_URL"
 

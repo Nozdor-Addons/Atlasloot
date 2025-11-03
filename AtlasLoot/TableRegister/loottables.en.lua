@@ -1301,7 +1301,7 @@ end
 	AtlasLoot_TableNames["Halloween2"] = { AL["Hallow's End"], "AtlasLootWorldEvents" };
 	AtlasLoot_TableNames["HeadlessHorseman"] = { AL["Headless Horseman"], "AtlasLootWorldEvents" };
 	AtlasLoot_TableNames["HeadlessHorsemanWB"] = { AL["Headless HorsemanWB"], "AtlasLootWorldEvents" };
-	AtlasLoot_TableNames["HeadlessHorsemanWBTMOG"] = { AL["HeadlessHorsemanWBTMOG"], "AtlasLootWorldEvents" };
+	AtlasLoot_TableNames["HeadlessHorsemanWB2"] = { AL["HeadlessHorsemanWB2"], "AtlasLootWorldEvents" };
   --- Harvest Festival
 	AtlasLoot_TableNames["HarvestFestival"] = { AL["Harvest Festival"], "AtlasLootWorldEvents" };
   --- Love is in the Air
@@ -1804,3 +1804,10 @@ end
     AtlasLoot_TableNames["TIslandHood"] = { AL["TIslandHood"], "Nozdor" };
     AtlasLoot_TableNames["TIslandTrinket"] = { AL["TIslandTrinket"], "Nozdor" };
     AtlasLoot_TableNames["TIslandOther"] = { AL["TIslandOther"], "Nozdor" };
+
+	AtlasLoot_TableNames["TIslandWeapon2"] = { AL["TIslandWeapon2"], "Nozdor" };
+    AtlasLoot_TableNames["TIslandRing2"] = { AL["TIslandRing2"], "Nozdor" };
+    AtlasLoot_TableNames["TIslandBelt2"] = { AL["TIslandBelt2"], "Nozdor" };
+    AtlasLoot_TableNames["TIslandHood2"] = { AL["TIslandHood2"], "Nozdor" };
+
+	AtlasLoot_TableNames["TIslandWeapon3"] = { AL["TIslandWeapon3"], "Nozdor" };

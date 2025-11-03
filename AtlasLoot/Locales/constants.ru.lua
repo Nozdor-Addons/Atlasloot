@@ -416,11 +416,16 @@ if AL then
     AL["Stranglethorn Fishing Extravaganza"] = "Рыбомания Тернистой долины";
 	-- TimlessIsland
 	AL["ISLANDMENU"] = "Вневременной остров";
-	AL["TIslandWeapon"] = "Оружие";
-	AL["TIslandRing"] = "Кольцо";
-	AL["TIslandBelt"] = "Пояс";
-	AL["TIslandHood"] = "Плащ";
-	AL["TIslandTrinket"] = "Аксессуар";
+	AL["TIslandWeapon"] = "Оружие (200)";
+    AL["TIslandWeapon2"] = "Оружие (213)";
+    AL["TIslandWeapon3"] = "Оружие (219)";
+	AL["TIslandRing"] = "Кольцо (200/213)";
+    AL["TIslandRing2"] = "Кольцо (213)";
+	AL["TIslandBelt"] = "Пояс (200/213)";
+    AL["TIslandBelt2"] = "Пояс (213)";
+	AL["TIslandHood"] = "Плащ (200/213)";
+    AL["TIslandHood2"] = "Плащ (213)";
+	AL["TIslandTrinket"] = "Аксессуар (200)";
 	AL["TIslandOther"] = "Разное";	
 	-- Zone
 	AL["Bronze Sanctuary"] = "Бронзовое Святилище";
@@ -1633,7 +1638,7 @@ if AL then
     AL["High Council"] = "Верховный советник";
     AL["Headless Horseman"] = "Всадник без головы";
     AL["Headless HorsemanWB"] = "Всадник без головы (мировой босс)";
-    AL["HeadlessHorsemanWBTMOG"] = "Всадник без головы (трансмог)";
+    AL["HeadlessHorsemanWB2"] = "Всадник без головы (мировой босс)";
     AL["Barleybrew Brewery"] = "Ячменевское Тчали";
     AL["Thunderbrew Brewery"] = "Грозовар Тчали";
     AL["Gordok Brewery"] = "Гордок Тчали";

@@ -1,8 +1,10 @@
 AtlasLootVersionsList = {}
 
-AtlasLootVersionsList[1] = "09.09.25"
-AtlasLootVersionsList[2] = "13.10.25"
-AtlasLootVersionsList[3] = "18.10.25"
+AtlasLootVersionsList[1] = "01.09.25"
+AtlasLootVersionsList[2] = "09.09.25"
+AtlasLootVersionsList[3] = "13.10.25"
+AtlasLootVersionsList[4] = "18.10.25"
+AtlasLootVersionsList[5] = "03.11.25"
 
 local GREY = "|cff999999";
 local RED = "|cffff0000";
@@ -58,6 +60,10 @@ text:SetText(WHITE..
 elseif x == 4 then
 text:SetText(WHITE..
 "- Лут с Всадника без головы (Мировой босс)".."\n\n"
+)
+elseif x == 5 then
+text:SetText(WHITE..
+"- Ап Вневпеменного острова".."\n\n"
 )
 end
 end
