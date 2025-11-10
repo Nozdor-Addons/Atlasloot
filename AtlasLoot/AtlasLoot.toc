@@ -2,7 +2,7 @@
 ## Title: AtlasLoot
 ## Notes: Shows the possible loot from the bosses
 ## Author: Hegarol(Создатель аддона). Copperfield, Sanguinius,Альтруист(Адаптация под Nozdor.com)
-## Version: 20.38
+## Version: 20.39
 ## X-eMail:
 ## X-Credits: Mysterium, за модификацию Аддона 
 ## X-Category: Карта

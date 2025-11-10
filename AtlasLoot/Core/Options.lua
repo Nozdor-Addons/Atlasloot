@@ -121,7 +121,7 @@ end
 
 function AtlasLootOptions_LoDStartup()
     if (AtlasLoot.db.profile.LoadAllLoDStartup) then
-        AtlasLoot.db.profile.LoadAllLoDStartup = false;
+        AtlasLoot.db.profile.LoadAllLoDStartup = true;
     else
         AtlasLoot.db.profile.LoadAllLoDStartup = true;
     end
