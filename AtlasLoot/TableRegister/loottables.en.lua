@@ -1774,6 +1774,7 @@ end
 	AtlasLoot_TableNames["WORLDEPICS"] = { AL["BoE World Epics"], "Menu" };
 	AtlasLoot_TableNames["WORLDEVENTMENU"] = { AL["World Events"], "Menu" };
 	AtlasLoot_TableNames["ISLANDMENU"] = { AL["ISLANDMENU"], "Menu" };
+	AtlasLoot_TableNames["NZD Raids"] = { AL["NZD Raids"], "Menu" };
 	AtlasLoot_TableNames["ABYSSALMENU"] = { AL["Abyssal Council"], "Menu" };
 	AtlasLoot_TableNames["ARGENTMENU"] = { AL["Argent Tournament"], "Menu" };
 	AtlasLoot_TableNames["DARKMOONMENU"] = { BabbleFaction["Darkmoon Faire"], "Menu" };
@@ -1797,6 +1798,8 @@ end
 	AtlasLoot_TableNames["EmptyTable"] = { AL["Select a Loot Table..."], "Menu" };
 	AtlasLoot_TableNames["EmptyInstance"] = { "AtlasLoot", "AtlasLootFallback" };
 	AtlasLoot_TableNames["AtlasLootFallback"] = { "AtlasLoot", "AtlasLootFallback" };
+  --
+	AtlasLoot_TableNames["AAO"] = { AL["AAO"], "Menu" };
   -- TimelessIsland
     AtlasLoot_TableNames["TIslandWeapon"] = { AL["TIslandWeapon"], "Nozdor" };
     AtlasLoot_TableNames["TIslandRing"] = { AL["TIslandRing"], "Nozdor" };
@@ -1811,3 +1814,8 @@ end
     AtlasLoot_TableNames["TIslandHood2"] = { AL["TIslandHood2"], "Nozdor" };
 
 	AtlasLoot_TableNames["TIslandWeapon3"] = { AL["TIslandWeapon3"], "Nozdor" };
+  --
+	AtlasLoot_TableNames["Balnazar"] = { AL["Balnazar"], "Nozdor" };
+	AtlasLoot_TableNames["Fretly"] = { AL["Fretly"], "Nozdor" };
+	AtlasLoot_TableNames["Hilda"] = { AL["Hilda"], "Nozdor" };
+	AtlasLoot_TableNames["Beatriss"] = { AL["Beatriss"], "Nozdor" };

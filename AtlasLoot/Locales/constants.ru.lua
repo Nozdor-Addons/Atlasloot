@@ -426,23 +426,15 @@ if AL then
 	AL["TIslandHood"] = "Плащ (200/213)";
     AL["TIslandHood2"] = "Плащ (213)";
 	AL["TIslandTrinket"] = "Аксессуар (200)";
-	AL["TIslandOther"] = "Разное";	
-	-- Zone
-	AL["Bronze Sanctuary"] = "Бронзовое Святилище";
-	AL["Tol'Garod Prison"] = "Тол'Гародская тюрьма";
-	AL["Tol'Garod Prison2"] = "258";
-	AL["Tol'Garod Prison3"] = "271";
-	AL["Tol'Garod Prison4"] = "284";
-	AL["Tol'Garod Prison5"] = "245";
-	AL["Gogonash"] = "Гогонаш";
-	AL["Xtrax Mind Absorber"] = "Ктракс";
-	AL["Magic Eater"] = "Пожиратель магии";
-	AL["Murozond"] = "Мурозонд";
-	AL["Elonus"] = "Элонус";
-	AL["Imporus"] = "Импорус";
-	AL["GrainOfSandOfLost"] = "Награды за песчинки времени";
-	AL["Zort"] = "Зорт";
-	
+	AL["TIslandOther"] = "Разное";
+    --
+    AL["NZD Raids"] = "Рейды Nozdor";
+    AL["AAO"] = "Анклав Алого Ордена";
+    AL["Balnazar"] = "Бальназзар";
+    AL["Fretly"] = "Командир стражи Фрэтли";
+    AL["Hilda"] = "Верховный маг Хильда";
+    AL["Beatriss"] = "Верховная главнокомандующая Беатриса";
+
 	-- T4DQ
 	AL["T4DQDeathKnightDPS"] = "ДК - Нечестивость";
 	AL["T4DQDeathKnightDPSfrost"] = "ДК - Лед";

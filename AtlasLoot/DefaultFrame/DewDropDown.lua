@@ -253,21 +253,28 @@ AtlasLoot_DewDropDown = {
 		},
 	},
 	[7] = {
+		[AL["NZD Raids"]] = {
+			[1] = {
+			{ AL["AAO"], "AAO", "Submenu" },
+			},
+		},
+	},	
+	[8] = {
 		{ AL["ISLANDMENU"], "ISLANDMENU", "Table" },
 	},
-	[8] = {
+	[9] = {
 		{ AL["Crafting"], "CRAFTINGMENU", "Table" },
 	},
-	[9] = {
+	[10] = {
 		{ AL["Sets/Collections"], "SETMENU", "Table" },
 	},
-	[10] = {
+	[11] = {
 		{ AL["PvP Rewards"], "PVPMENU", "Table" },
 	},
-	[11] = {
+	[12] = {
 		{ AL["Reputation Factions"], "REPMENU", "Table" },
 	},
-	[12] = {
+	[13] = {
 		{ AL["World Events"], "WORLDEVENTMENU", "Table" },
 	},
 };
@@ -918,5 +925,11 @@ AtlasLoot_DewDropDown_SubTables = {
 		{ "", "ICCLichKing" },
 		{ "", "ICCJaina25ManHEROIC" },
 		{ "", "ICCTrash25Man" },
-	},		
+	},
+	["AAO"] = {
+		{ "", "Balnazar" },
+		{ "", "Fretly" },
+		{ "", "Hilda" },
+		{ "", "Beatriss" },
+	},
 };

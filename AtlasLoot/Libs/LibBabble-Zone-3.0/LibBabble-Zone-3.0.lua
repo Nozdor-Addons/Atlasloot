@@ -1788,6 +1788,7 @@ elseif GAME_LOCALE == "ruRU" then
 	["Trial of the Champion"] = "Испытание чемпиона",
 	["Trial of the Crusader"] = "Испытание крестоносца",
 	["Twisting Nether"] = "Круговерть Пустоты",
+	["AAO"] = "Анклав Алого Ордена",
 	Uldaman = "Ульдаман",
 	Ulduar = "Ульдуар",
 	Undercity = "Подгород",

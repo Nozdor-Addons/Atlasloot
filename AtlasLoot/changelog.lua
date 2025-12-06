@@ -5,6 +5,7 @@ AtlasLootVersionsList[2] = "09.09.25"
 AtlasLootVersionsList[3] = "13.10.25"
 AtlasLootVersionsList[4] = "18.10.25"
 AtlasLootVersionsList[5] = "03.11.25"
+AtlasLootVersionsList[5] = "29.11.25"
 
 local GREY = "|cff999999";
 local RED = "|cffff0000";
@@ -64,6 +65,10 @@ text:SetText(WHITE..
 elseif x == 5 then
 text:SetText(WHITE..
 "- Ап Вневпеменного острова".."\n\n"
+)
+elseif x == 6 then
+text:SetText(WHITE..
+"- Предметы с ААО".."\n\n"
 )
 end
 end
