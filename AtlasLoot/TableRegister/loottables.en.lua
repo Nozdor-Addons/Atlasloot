@@ -1296,6 +1296,7 @@ end
   --- Feast of Winter Veil
 	AtlasLoot_TableNames["Winterviel1"] = { AL["Feast of Winter Veil"], "AtlasLootWorldEvents" };
 	AtlasLoot_TableNames["Winterviel2"] = { AL["Feast of Winter Veil"], "AtlasLootWorldEvents" };
+	AtlasLoot_TableNames["Winterviel3"] = { "Варка", "AtlasLootWorldEvents" };
   --- Hallow's End
 	AtlasLoot_TableNames["Halloween1"] = { AL["Hallow's End"], "AtlasLootWorldEvents" };
 	AtlasLoot_TableNames["Halloween2"] = { AL["Hallow's End"], "AtlasLootWorldEvents" };
