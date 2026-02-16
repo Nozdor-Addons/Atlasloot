@@ -435,6 +435,19 @@ if AL then
     AL["Hilda"] = "Верховный маг Хильда";
     AL["Beatriss"] = "Верховная главнокомандующая Беатриса";
 
+    -- Руны
+    AL["Runes"] = "Руны";
+    AL["PriestRunes"] = "Руны жрец";
+    AL["HunterRunes"] = "Руны охотник";
+    AL["DKRunes"] = "Руны рыцарь смерти";
+    AL["WarriorRunes"] = "Руны воин";
+    AL["WarlockRunes"] = "Руны чернокнижник";
+    AL["RogueRunes"] = "Руны разбойник";
+    AL["DruidRunes"] = "Руны друид";
+    AL["ShamanRunes"] = "Руны шаман";
+    AL["MageRunes"] = "Руны маг";
+    AL["PaladinRunes"] = "Руны паладин";
+
 	-- T4DQ
 	AL["T4DQDeathKnightDPS"] = "ДК - Нечестивость";
 	AL["T4DQDeathKnightDPSfrost"] = "ДК - Лед";
