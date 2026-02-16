@@ -258,7 +258,7 @@ AtlasLoot_DewDropDown = {
 			{ AL["AAO"], "AAO", "Submenu" },
 			},
 		},
-	},	
+	},
 	[8] = {
 		{ AL["ISLANDMENU"], "ISLANDMENU", "Table" },
 	},
@@ -276,6 +276,9 @@ AtlasLoot_DewDropDown = {
 	},
 	[13] = {
 		{ AL["World Events"], "WORLDEVENTMENU", "Table" },
+	},
+	[14] = {
+		{ AL["Runes"], "Runes", "Table" },
 	},
 };
 

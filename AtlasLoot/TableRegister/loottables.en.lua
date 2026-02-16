@@ -1820,3 +1820,15 @@ end
 	AtlasLoot_TableNames["Fretly"] = { AL["Fretly"], "Nozdor" };
 	AtlasLoot_TableNames["Hilda"] = { AL["Hilda"], "Nozdor" };
 	AtlasLoot_TableNames["Beatriss"] = { AL["Beatriss"], "Nozdor" };
+	--
+	AtlasLoot_TableNames["Runes"] = { AL["Runes"], "Menu" };
+	  AtlasLoot_TableNames["PriestRunes"] = { AL["PriestRunes"], "Nozdor" };
+		AtlasLoot_TableNames["HunterRunes"] = { AL["HunterRunes"], "Nozdor" };
+		AtlasLoot_TableNames["DKRunes"] = { AL["DKRunes"], "Nozdor" };
+		AtlasLoot_TableNames["WarriorRunes"] = { AL["WarriorRunes"], "Nozdor" };
+		AtlasLoot_TableNames["WarlockRunes"] = { AL["WarlockRunes"], "Nozdor" };
+		AtlasLoot_TableNames["RogueRunes"] = { AL["RogueRunes"], "Nozdor" };
+		AtlasLoot_TableNames["DruidRunes"] = { AL["DruidRunes"], "Nozdor" };
+		AtlasLoot_TableNames["ShamanRunes"] = { AL["ShamanRunes"], "Nozdor" };
+		AtlasLoot_TableNames["MageRunes"] = { AL["MageRunes"], "Nozdor" };
+		AtlasLoot_TableNames["PaladinRunes"] = { AL["PaladinRunes"], "Nozdor" };

@@ -1454,6 +1454,27 @@
 				        this:SetFrameLevel( (this:GetParent()):GetFrameLevel() + 1 );
 			        </OnShow>
 				</Scripts>
+				</Button>
+			<Button name="$parent_Runes" inherits="AtlasLootPanelButtonTemplate">
+                <Anchors>
+                    <Anchor point="LEFT" relativeTo="$parent_Sets" relativePoint="RIGHT">
+                        <Offset>
+                            <AbsDimension x="0" y="0"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+					<OnClick>
+                        AtlasLoot_QuickLooks:Hide();
+                        AtlasLootQuickLooksButton:Hide();
+						AtlasLoot_GenerateAtlasMenu("Runes", AtlasLoot_AnchorFrame);
+					</OnClick>
+                    <OnShow>
+                        local AL = LibStub("AceLocale-3.0"):GetLocale("AtlasLoot");
+                        this:SetText(AL["Factions"]);
+				        this:SetFrameLevel( (this:GetParent()):GetFrameLevel() + 1 );
+			        </OnShow>
+				</Scripts>
             </Button>
 			<Button name="$parent_AAO" inherits="AtlasLootPanelButtonTemplate">
                 <Anchors>
