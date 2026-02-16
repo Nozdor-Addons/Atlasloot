@@ -30,6 +30,34 @@ AtlasLoot_AddTooltip(frameb, tooltiptext)
 --AtlasLoot Mods
 AtlasLoot = LibStub("AceAddon-3.0"):NewAddon("AtlasLoot");
 
+-- Allow writing bare tokens like s12345 (without quotes) in loot tables.
+-- If a global named s<digits> is accessed and not defined, it will resolve to the string "s<digits>".
+do
+    local mt = getmetatable(_G);
+    if not mt then
+        mt = {};
+        setmetatable(_G, mt);
+    end
+    local prevIndex = mt.__index;
+    mt.__index = function(t, k)
+        if type(k) == "string" then
+            local num = string.match(k, "^s(%d+)$");
+            if num then
+                local v = "s"..num;
+                rawset(t, k, v);
+                return v;
+            end
+        end
+        if type(prevIndex) == "function" then
+            return prevIndex(t, k);
+        elseif type(prevIndex) == "table" then
+            return prevIndex[k];
+        end
+        return nil;
+    end;
+end
+
+
 --Instance required libraries
 local BabbleBoss = AtlasLoot_GetLocaleLibBabble("LibBabble-Boss-3.0")
 local AL = LibStub("AceLocale-3.0"):GetLocale("AtlasLoot");
@@ -723,7 +751,7 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss, pFrame)
 		for i = 1, 30, 1 do
 			--Check for a valid object (that it exists, and that it has a name)
 			if(dataSource[dataID][i] ~= nil and dataSource[dataID][i][4] ~= "") then
-				if string.sub(dataSource[dataID][i][2], 1, 1) == "s" then
+				if type(dataSource[dataID][i][2]) == "string" and string.sub(dataSource[dataID][i][2], 1, 1) == "s" then
 					isItem = false;
 				else
 					isItem = true;
@@ -746,7 +774,36 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss, pFrame)
 						end
 					end
 				else
-					spellName, _, spellIcon, _, _, _, _, _, _ = GetSpellInfo(string.sub(dataSource[dataID][i][2], 2));
+					local spellID = nil;
+					if type(dataSource[dataID][i][2]) == "string" then
+						spellID = tonumber(string.sub(dataSource[dataID][i][2], 2));
+					end
+					if spellID then
+                        -- Retail API compatibility: prefer C_Spell if present, otherwise fall back to legacy globals
+                        spellName, spellIcon = nil, nil;
+                        if C_Spell and C_Spell.GetSpellInfo then
+                            local info = C_Spell.GetSpellInfo(spellID);
+                            if type(info) == "table" then
+                                spellName = info.name;
+                                -- Some client versions return iconID/texture, handle both
+                                spellIcon = info.iconID or info.icon or info.texture;
+                            end
+                        end
+                        if not spellName or not spellIcon then
+                            local n, _, ic = GetSpellInfo(spellID);
+                            spellName = spellName or n;
+                            spellIcon = spellIcon or ic;
+                        end
+                        if not spellIcon then
+                            if C_Spell and C_Spell.GetSpellTexture then
+                                spellIcon = C_Spell.GetSpellTexture(spellID);
+                            elseif GetSpellTexture then
+                                spellIcon = GetSpellTexture(spellID);
+                            end
+                        end
+                    else
+                        spellName, spellIcon = nil, nil;
+                    end
 					if spellName then
                         text = AtlasLoot_FixText(string.sub(dataSource[dataID][i][4], 1, 4)..spellName);
                     else
@@ -780,8 +837,6 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss, pFrame)
 				--If there is no data on the texture an item should have, show a big red question mark
 				if dataSource[dataID][i][3] == "?" then
 					iconFrame:SetTexture("Interface\\Icons\\INV_Misc_QuestionMark");
-				elseif dataSource[dataID][i][3] == "" then
-					iconFrame:SetTexture(GetItemIcon(dataSource[dataID][i][2]));
 				elseif (not isItem) and (spellIcon) then
 					if tonumber(dataSource[dataID][i][3]) then
 						iconFrame:SetTexture(GetItemIcon(tonumber(dataSource[dataID][i][3])));
@@ -792,6 +847,8 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss, pFrame)
 					else
 						iconFrame:SetTexture(spellIcon);
 					end
+				elseif dataSource[dataID][i][3] == "" then
+					iconFrame:SetTexture(GetItemIcon(dataSource[dataID][i][2]));
 				else
 					--else show the texture
 					iconFrame:SetTexture("Interface\\Icons\\"..dataSource[dataID][i][3]);
@@ -804,7 +861,7 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss, pFrame)
                 itemButton.extra = extra;
 
                 --Highlight items in the wishlist
-                if dataSource[dataID][i][2] ~= "" and dataSource[dataID][i][2] ~= 0 and dataID ~= "WishList" and AtlasLootWishList["Options"][UnitName("player")]["Mark"] == true then
+                if dataSource[dataID][i][2] and dataSource[dataID][i][2] ~= "" and dataSource[dataID][i][2] ~= 0 and dataID ~= "WishList" and AtlasLootWishList["Options"][UnitName("player")]["Mark"] == true then
 					local xitemexistwish, itemwishicons = AtlasLoot_WishListCheck(dataSource[dataID][i][2], true)
                     if xitemexistwish then
                         text = itemwishicons.." "..text;
@@ -816,7 +873,7 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss, pFrame)
 				extraFrame:Show();
 
 				--For convenience, we store information about the objects in the objects so that it can be easily accessed later
-				if((string.sub(dataSource[dataID][i][2], 1, 1) == "s") and (AtlasLoot.db.profile.CraftingLink ~= 1) and (tonumber(dataSource[dataID][i][3]))) then
+				if((type(dataSource[dataID][i][2]) == "string" and string.sub(dataSource[dataID][i][2], 1, 1) == "s") and (AtlasLoot.db.profile.CraftingLink ~= 1) and (tonumber(dataSource[dataID][i][3]))) then
                     itemButton.itemID = dataSource[dataID][i][3];
                     itemButton.spellitemID = dataSource[dataID][i][3];
                 else
@@ -827,6 +884,36 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss, pFrame)
                         itemButton.spellitemID = 0;
                     end
                 end
+
+                -- Spell support:
+                -- Keep the original button scripts (from XML) so we can safely override them for spells only
+                if not itemButton.__al_origScriptsSaved then
+                    itemButton.__al_origScriptsSaved = true;
+                    itemButton.__al_origOnEnter = itemButton:GetScript("OnEnter");
+                    itemButton.__al_origOnLeave = itemButton:GetScript("OnLeave");
+                    itemButton.__al_origOnClick = itemButton:GetScript("OnClick");
+                end
+
+                -- Reset spell state each refresh
+                itemButton.spellID = nil;
+                itemButton.isSpell = false;
+
+                -- If itemID starts with "s", treat it as a spellID for tooltip/linking
+                if type(itemButton.itemID) == "string" and string.sub(itemButton.itemID, 1, 1) == "s" then
+                    itemButton.spellID = tonumber(string.sub(itemButton.itemID, 2));
+                    if itemButton.spellID then
+                        itemButton.isSpell = true;
+                        itemButton:SetScript("OnEnter", AtlasLoot_SpellItem_OnEnter);
+                        itemButton:SetScript("OnLeave", AtlasLoot_SpellItem_OnLeave);
+                        itemButton:SetScript("OnClick", AtlasLoot_SpellItem_OnClick);
+                    end
+                else
+                    -- Restore original scripts for non-spell entries
+                    if itemButton.__al_origOnEnter then itemButton:SetScript("OnEnter", itemButton.__al_origOnEnter); end
+                    if itemButton.__al_origOnLeave then itemButton:SetScript("OnLeave", itemButton.__al_origOnLeave); end
+                    if itemButton.__al_origOnClick then itemButton:SetScript("OnClick", itemButton.__al_origOnClick); end
+                end
+
                 itemButton.iteminfo = {};
 				if isItem then
 					itemButton.iteminfo.idcore = dataSource[dataID][i][2];
@@ -1550,6 +1637,87 @@ end
 AtlasLoot_QueryLootPage()
 Querys all valid items on the current loot page.
 ]]
+
+--------------------------------------------------------------------------------
+-- Spell support for AtlasLoot item buttons ("s<spellID>" entries)
+--------------------------------------------------------------------------------
+local function AtlasLoot_GetSpellIDFromButton(btn)
+    if not btn then return nil end
+    if btn.spellID and tonumber(btn.spellID) then
+        return tonumber(btn.spellID)
+    end
+    local id = btn.itemID
+    if type(id) == "string" then
+        -- Supported formats: "s12345" or "spell:12345"
+        if string.sub(id, 1, 1) == "s" then
+            return tonumber(string.sub(id, 2))
+        end
+        local sid = id:match("^spell:(%d+)$")
+        if sid then return tonumber(sid) end
+    end
+    return nil
+end
+
+function AtlasLoot_SpellItem_OnEnter(self)
+    local spellID = AtlasLoot_GetSpellIDFromButton(self)
+    if not spellID then return end
+    local tt = AtlasLootTooltip or GameTooltip
+    if not tt then return end
+    tt:SetOwner(self, "ANCHOR_RIGHT")
+    -- Prefer hyperlink so the tooltip shows a proper link; fall back to SetSpellByID if needed.
+    if tt.SetHyperlink then
+        tt:SetHyperlink("spell:"..spellID)
+    end
+    if (tt.NumLines and tt:NumLines() == 0) and tt.SetSpellByID then
+        tt:SetSpellByID(spellID)
+    elseif (not tt.NumLines) and tt.SetSpellByID then
+        -- Some clients do not expose NumLines on GameTooltip; try SetSpellByID as a secondary fill.
+        if not GetSpellInfo(spellID) then
+            -- If the spell is unknown to the client, leave the tooltip as-is.
+        else
+            tt:SetSpellByID(spellID)
+        end
+    end
+    tt:Show()
+end
+
+function AtlasLoot_SpellItem_OnLeave(self)
+    local tt = AtlasLootTooltip or GameTooltip
+    if tt then tt:Hide() end
+end
+
+function AtlasLoot_SpellItem_OnClick(self, button)
+    local spellID = AtlasLoot_GetSpellIDFromButton(self)
+    if not spellID then return end
+
+    -- Shift-click: put spell link into chat
+    if IsShiftKeyDown() then
+        local link = GetSpellLink(spellID)
+        if not link then
+            local n = GetSpellInfo(spellID)
+            n = n or ("Spell "..spellID)
+            link = "|cff71d5ff|Hspell:"..spellID.."|h["..n.."]|h|r"
+        end
+        if link and ChatEdit_InsertLink then
+            ChatEdit_InsertLink(link)
+            return
+        end
+    end
+
+    -- Fallback: show tooltip on click as well
+    local tt = AtlasLootTooltip or GameTooltip
+    if tt then
+        tt:SetOwner(self, "ANCHOR_RIGHT")
+        if tt.SetHyperlink then
+            tt:SetHyperlink("spell:"..spellID)
+        elseif tt.SetSpellByID then
+            tt:SetSpellByID(spellID)
+        end
+        tt:Show()
+    end
+end
+
+
 function AtlasLoot_QueryLootPage()
     i=1;
     local querytime = 0;
@@ -1560,8 +1728,10 @@ function AtlasLoot_QueryLootPage()
             querytime = GetTime();
             button = getglobal("AtlasLootItem_"..i);
             queryitem = button.itemID;
-            if (queryitem) and (queryitem ~= nil) and (queryitem ~= "") and (queryitem ~= 0) and (string.sub(queryitem, 1, 1) ~= "s") then
-                GameTooltip:SetHyperlink("item:"..queryitem..":0:0:0:0:0:0:0");
+            if (queryitem) and (queryitem ~= nil) and (queryitem ~= "") and (queryitem ~= 0) then
+                if type(queryitem) ~= "string" or string.sub(queryitem, 1, 1) ~= "s" then
+                    GameTooltip:SetHyperlink("item:"..queryitem..":0:0:0:0:0:0:0");
+                end
             end
             i=i+1;
         end

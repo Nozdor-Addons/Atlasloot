@@ -1727,6 +1727,8 @@ end
 	AtlasLoot_TableNames["WrathfulGladiatorWeapons1"] = { AL["Wrathful Gladiator\'s Weapons"], "AtlasLootWotLK" };
 	AtlasLoot_TableNames["WrathfulGladiatorWeapons2"] = { AL["Wrathful Gladiator\'s Weapons"], "AtlasLootWotLK" };
 	AtlasLoot_TableNames["WrathfulGladiatorWeapons3"] = { AL["Wrathful Gladiator\'s Weapons"], "AtlasLootWotLK" };
+	AtlasLoot_TableNames["WrathfulGladiatorWeapons4"] = { AL["Wrathful Gladiator\'s Weapons"], "AtlasLootWotLK" };
+	AtlasLoot_TableNames["WrathfulGladiatorWeapons5"] = { AL["Wrathful Gladiator\'s Weapons"], "AtlasLootWotLK" };
 	AtlasLoot_TableNames["Arena4Weapons1"] = { AL["Arena Season 4 Weapons"], "AtlasLootBurningCrusade" };
 	AtlasLoot_TableNames["Arena4Weapons2"] = { AL["Arena Season 4 Weapons"], "AtlasLootBurningCrusade" };
 
@@ -1820,3 +1822,15 @@ end
 	AtlasLoot_TableNames["Fretly"] = { AL["Fretly"], "Nozdor" };
 	AtlasLoot_TableNames["Hilda"] = { AL["Hilda"], "Nozdor" };
 	AtlasLoot_TableNames["Beatriss"] = { AL["Beatriss"], "Nozdor" };
+  --
+	AtlasLoot_TableNames["Runes"] = { AL["Runes"], "Menu" };
+	AtlasLoot_TableNames["PriestRunes"] = { AL["PriestRunes"], "Nozdor" };
+	AtlasLoot_TableNames["HunterRunes"] = { AL["HunterRunes"], "Nozdor" };
+	AtlasLoot_TableNames["DKRunes"] = { AL["DKRunes"], "Nozdor" };
+	AtlasLoot_TableNames["WarriorRunes"] = { AL["WarriorRunes"], "Nozdor" };
+	AtlasLoot_TableNames["WarlockRunes"] = { AL["WarlockRunes"], "Nozdor" };
+	AtlasLoot_TableNames["RogueRunes"] = { AL["RogueRunes"], "Nozdor" };
+	AtlasLoot_TableNames["DruidRunes"] = { AL["DruidRunes"], "Nozdor" };
+	AtlasLoot_TableNames["ShamanRunes"] = { AL["ShamanRunes"], "Nozdor" };
+	AtlasLoot_TableNames["MageRunes"] = { AL["MageRunes"], "Nozdor" };
+	AtlasLoot_TableNames["PaladinRunes"] = { AL["PaladinRunes"], "Nozdor" };

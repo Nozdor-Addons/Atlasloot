@@ -43,14 +43,37 @@ function AtlasLootItem_OnEnter()
         end
     end
     if this.itemID and (this.itemID ~= 0) then
-        if string.sub(this.itemID, 1, 1) == "s" then
-            isItem = false;
-        else
-            isItem = true;
+        local _itemID = this.itemID;
+        local isSpell = (type(_itemID) == "string" and strsub(_itemID, 1, 1) == "s");
+        isItem = not isSpell;
+        -- Spell tooltip support
+        if isSpell then
+            local spellID = tonumber(strsub(_itemID, 2));
+            if spellID then
+                getglobal(this:GetName().."_Unsafe"):Hide();
+                AtlasLootTooltip:SetOwner(this, "ANCHOR_RIGHT", -(this:GetWidth() / 2), 24);
+                if AtlasLootTooltip.SetHyperlink then
+                    AtlasLootTooltip:SetHyperlink("spell:"..spellID);
+                end
+                if (AtlasLootTooltip.NumLines and AtlasLootTooltip:NumLines() == 0) and AtlasLootTooltip.SetSpellByID then
+                    AtlasLootTooltip:SetSpellByID(spellID);
+                elseif (not AtlasLootTooltip.NumLines) and AtlasLootTooltip.SetSpellByID and GetSpellInfo and GetSpellInfo(spellID) then
+                    AtlasLootTooltip:SetSpellByID(spellID);
+                end
+                if AtlasLoot.db.profile.ItemIDs then
+                    AtlasLootTooltip:AddLine(BLUE.."SpellID: "..spellID, nil, nil, nil, 1);
+                end
+                if( this.droprate ~= nil) then
+                    AtlasLootTooltip:AddLine(AL["Drop Rate: "]..this.droprate, 1, 1, 0);
+                end
+                AtlasLootTooltip:Show();
+            end
+            return;
         end
         if isItem then
-            local color = strsub(getglobal("AtlasLootItem_"..this:GetID().."_Name"):GetText(), 3, 10);
-            local name = strsub(getglobal("AtlasLootItem_"..this:GetID().."_Name"):GetText(), 11);
+            local _nameText = getglobal("AtlasLootItem_"..this:GetID().."_Name"):GetText() or "";
+            local color = strsub(_nameText, 3, 10);
+            local name = strsub(_nameText, 11);
             if(this.itemID ~= 0 and this.itemID ~= "" and this.itemID ~= nil and AtlasLootDKPValues and AtlasLootClassPriority) then
                 Identifier = "Item"..this.itemID;
                 DKP = AtlasLootDKPValues[Identifier];
@@ -167,10 +190,21 @@ function AtlasLootItem_OnEnter()
                 end
             end
         else
-            spellID = string.sub(this.itemID, 2);
+            local spellID = tonumber(string.sub(_itemID, 2));
             AtlasLootTooltip:SetOwner(this, "ANCHOR_RIGHT", -(this:GetWidth() / 2), 24);
             AtlasLootTooltip:ClearLines();
-            AtlasLootTooltip:SetHyperlink(AtlasLoot_GetEnchantLink(spellID));
+            local enchantLink = (AtlasLoot_GetEnchantLink and AtlasLoot_GetEnchantLink(spellID)) or nil;
+            if enchantLink and enchantLink ~= "" then
+                -- Enchant (legacy AtlasLoot behaviour)
+                AtlasLootTooltip:SetHyperlink(enchantLink);
+            else
+                -- Regular spell
+                if AtlasLootTooltip.SetSpellByID then
+                AtlasLootTooltip:SetSpellByID(spellID);
+            else
+                AtlasLootTooltip:SetHyperlink("spell:"..spellID);
+            end
+            end
             AtlasLootTooltip:Show();
             if(this.spellitemID and ((AtlasLoot.db.profile.EquipCompare and ((not EquipCompare_RegisterTooltip) or (not EquipCompare_Enabled))) or IsShiftKeyDown())) then
                 AtlasLootItem_ShowCompareItem(); --- CALL MISSING METHOD TO SHOW 2 TOOLTIPS (Item Compare)
@@ -209,14 +243,14 @@ end
 --------------------------------------------------------------------------------
 function AtlasLootItem_OnClick(arg1)
     local isItem;
-	local color = strsub(getglobal("AtlasLootItem_"..this:GetID().."_Name"):GetText(), 1, 10);
+	if (not this.itemID) or (this.itemID == 0) or (this.itemID == "") then return; end
+	local _itemID = this.itemID;
+	local isSpell = (type(_itemID) == "string" and strsub(_itemID, 1, 1) == "s");
+	isItem = not isSpell;
+	local _nameText = getglobal("AtlasLootItem_"..this:GetID().."_Name"):GetText() or "";
+	local color = strsub(_nameText, 1, 10);
 	local id = this:GetID();
-	local name = strsub(getglobal("AtlasLootItem_"..this:GetID().."_Name"):GetText(), 11);
-    if string.sub(this.itemID, 1, 1) == "s" then
-            isItem = false;
-        else
-            isItem = true;
-        end
+	local name = strsub(_nameText, 11);
     if isItem then
         local iteminfo = GetItemInfo(this.itemID);
         local itemName, itemLink, itemQuality, itemLevel, itemMinLevel, itemType, itemSubType, itemCount, itemEquipLoc, itemTexture = GetItemInfo(this.itemID);
@@ -259,13 +293,29 @@ function AtlasLootItem_OnClick(arg1)
         end
     else
         if IsShiftKeyDown() then
-            spellID = string.sub(this.itemID, 2);
-            ChatEdit_InsertLink(AtlasLoot_GetEnchantLink(spellID));
+            local spellID = tonumber(string.sub(_itemID, 2));
+            local enchantLink = (AtlasLoot_GetEnchantLink and AtlasLoot_GetEnchantLink(spellID)) or nil;
+            if enchantLink and enchantLink ~= "" then
+                ChatEdit_InsertLink(enchantLink);
+            else
+                if GetSpellLink then
+                    local sl = GetSpellLink(spellID);
+                    if sl then
+                        ChatEdit_InsertLink(sl);
+                    else
+                        local sn = GetSpellInfo and GetSpellInfo(spellID) or ("Spell "..spellID);
+                        ChatEdit_InsertLink("|Hspell:"..spellID.."|h["..sn.."]|h");
+                    end
+                else
+                    local sn = GetSpellInfo and GetSpellInfo(spellID) or ("Spell "..spellID);
+                    ChatEdit_InsertLink("|Hspell:"..spellID.."|h["..sn.."]|h");
+                end
+            end
         elseif(IsAltKeyDown() and (this.itemID ~= 0)) then
             if AtlasLootItemsFrame.refresh[1] == "WishList" then
                 AtlasLoot_DeleteFromWishList(this.itemID);
             else
-                spellName, _, _, _, _, _, _, _, _ = GetSpellInfo(string.sub(this.itemID, 2));
+                spellName, _, _, _, _, _, _, _, _ = GetSpellInfo(string.sub(_itemID, 2));
                 --spellIcon = GetItemIcon(this.dressingroomID);
                 AtlasLoot_ShowWishListDropDown(this.itemID, this.dressingroomID, "=ds="..spellName, "=ds="..AtlasLootItemsFrame.refresh[3], AtlasLootItemsFrame.refreshOri[1].."|"..AtlasLootItemsFrame.refreshOri[2],this);
             end

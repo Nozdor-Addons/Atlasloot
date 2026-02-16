@@ -380,6 +380,7 @@ if AL then
     AL["PvP Armor Sets"] = "PvP Комплекты";
     AL["PvP Weapons"] = "PvP Оружие";
     AL["PvP Non-Set Epics"] = "PvP не из комплектов";
+    AL["Wrathful Gladiator\'s Weapons"] = "PvP оружие";
     AL["PvPNewTokens"] = "PvP Жетоны";
     AL["PvP Non-Set Epics a9"] = "PvP 9-й сезон не из комплектов";
     AL["PvP Non-Set Epics a10"] = "PvP 10-й сезон не из комплектов";
@@ -434,6 +435,20 @@ if AL then
     AL["Fretly"] = "Командир стражи Фрэтли";
     AL["Hilda"] = "Верховный маг Хильда";
     AL["Beatriss"] = "Верховная главнокомандующая Беатриса";
+
+    -- Руны
+    AL["Runes"] = "Руны";
+    AL["PriestRunes"] = "Руны жрец";
+    AL["HunterRunes"] = "Руны охотник";
+    AL["DKRunes"] = "Руны рыцарь смерти";
+    AL["WarriorRunes"] = "Руны воин";
+    AL["WarlockRunes"] = "Руны чернокнижник";
+    AL["RogueRunes"] = "Руны разбойник";
+    AL["DruidRunes"] = "Руны друид";
+    AL["ShamanRunes"] = "Руны шаман";
+    AL["MageRunes"] = "Руны маг";
+    AL["PaladinRunes"] = "Руны паладин";
+
 
 	-- T4DQ
 	AL["T4DQDeathKnightDPS"] = "ДК - Нечестивость";

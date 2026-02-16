@@ -5,4 +5,5 @@
     <Script file="WorldEventMenus.lua"/>
     <Script file="RepMenus.lua"/>
     <Script file="IslandMenus.lua"/>
+    <Script file="Runes.lua"/>
 </Ui>
