@@ -1831,6 +1831,7 @@ end
 	AtlasLoot_TableNames["WarlockRunes"] = { AL["WarlockRunes"], "Nozdor" };
 	AtlasLoot_TableNames["RogueRunes"] = { AL["RogueRunes"], "Nozdor" };
 	AtlasLoot_TableNames["DruidRunes"] = { AL["DruidRunes"], "Nozdor" };
+	AtlasLoot_TableNames["DruidRunes2"] = { AL["DruidRunes"], "Nozdor" };
 	AtlasLoot_TableNames["ShamanRunes"] = { AL["ShamanRunes"], "Nozdor" };
 	AtlasLoot_TableNames["MageRunes"] = { AL["MageRunes"], "Nozdor" };
 	AtlasLoot_TableNames["PaladinRunes"] = { AL["PaladinRunes"], "Nozdor" };

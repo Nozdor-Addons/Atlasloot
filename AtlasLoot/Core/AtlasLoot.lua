@@ -31,33 +31,6 @@ AtlasLoot_AddTooltip(frameb, tooltiptext)
 AtlasLoot = LibStub("AceAddon-3.0"):NewAddon("AtlasLoot");
 
 -- Allow writing bare tokens like s12345 (without quotes) in loot tables.
--- If a global named s<digits> is accessed and not defined, it will resolve to the string "s<digits>".
-do
-    local mt = getmetatable(_G);
-    if not mt then
-        mt = {};
-        setmetatable(_G, mt);
-    end
-    local prevIndex = mt.__index;
-    mt.__index = function(t, k)
-        if type(k) == "string" then
-            local num = string.match(k, "^s(%d+)$");
-            if num then
-                local v = "s"..num;
-                rawset(t, k, v);
-                return v;
-            end
-        end
-        if type(prevIndex) == "function" then
-            return prevIndex(t, k);
-        elseif type(prevIndex) == "table" then
-            return prevIndex[k];
-        end
-        return nil;
-    end;
-end
-
-
 --Instance required libraries
 local BabbleBoss = AtlasLoot_GetLocaleLibBabble("LibBabble-Boss-3.0")
 local AL = LibStub("AceLocale-3.0"):GetLocale("AtlasLoot");
