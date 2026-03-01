@@ -3957,6 +3957,7 @@ local BabbleZone = AtlasLoot_GetLocaleLibBabble("LibBabble-Zone-3.0")
 		{ 19, 45134, "", "=q4=Plated Leggings of Ruination", "=ds=#s11#, #a4#"};
 		{ 20, 45133, "", "=q4=Pendant of Fiery Havoc", "=ds=#s2#"};
 		{ 21, 45132, "", "=q4=Golden Saronite Dragon", "=ds=#h3#, #w13#", "", "0.11%"};
+		{ 22, 51322, "", "=q4=Кразгорн, Раскол Ульдуара", "=ds=#h2#, #w10#", "", "0.11%"};
 		{ 28, 70019, "", "=q5=Фрагмент силы Ульдуара", "=ds=#m3#", ""};
 		{ 29, 45038, "", "=q5=Fragment of Val'anyr", "=ds=#m3#", "", "40%"};
 		{ 30, 46017, "", "=q5=Val'anyr, Hammer of Ancient Kings", "=q1=#m4#: =ds=#h1#, #w6#"};
@@ -4134,7 +4135,8 @@ local BabbleZone = AtlasLoot_GetLocaleLibBabble("LibBabble-Zone-3.0")
 		{ 20, 45241, "", "=q4=Belt of Colossal Rage", "=ds=#s10#, #a4#", "", "15%"};
 		{ 21, 45243, "", "=q4=Sapphire Amulet of Renewal", "=ds=#s2#", "", "10%"};
 		{ 22, 45607, "", "=q4=Fang of Oblivion", "=ds=#h1#, #w4#", "", "18%"};
-		{ 23, 45857, "", "=q4=Archivum Data Disc", "=ds=#m2#", "", "94%"};
+		{ 23, 49156, "", "=q4=Ормагос, Секира Каменной Войны", "=ds=#h2#, #w1#", "", "18%"};
+		{ 24, 45857, "", "=q4=Archivum Data Disc", "=ds=#m2#", "", "94%"};
 		{ 28, 70019, "", "=q5=Фрагмент силы Ульдуара", "=ds=#m3#", ""};
 		{ 29, 45038, "", "=q5=Fragment of Val'anyr", "=ds=#m3#", "", "40%"};
 		{ 30, 46017, "", "=q5=Val'anyr, Hammer of Ancient Kings", "=q1=#m4#: =ds=#h1#, #w6#"};
@@ -4308,7 +4310,7 @@ local BabbleZone = AtlasLoot_GetLocaleLibBabble("LibBabble-Zone-3.0")
 		{ 20, 45459, "", "=q4=Frigid Strength of Hodir", "=ds=#s2#", "", "13%"};
 		{ 21, 45612, "", "=q4=Constellus", "=ds=#h3#, #w6#", "", "11%"};
 		{ 22, 45457, "", "=q4=Staff of Endless Winter", "=ds=#w9#", "", "19%"};
-		{ 24, 45815, "", "=q1=Hodir's Sigil", "=ds=#m3#", "", "21%"};
+		{ 23, 45815, "", "=q1=Hodir's Sigil", "=ds=#m3#", "", "21%"};
 		{ 28, 70019, "", "=q5=Фрагмент силы Ульдуара", "=ds=#m3#", ""};
 		{ 29, 45038, "", "=q5=Fragment of Val'anyr", "=ds=#m3#", "", "40%"};
 		{ 30, 46017, "", "=q5=Val'anyr, Hammer of Ancient Kings", "=q1=#m4#: =ds=#h1#, #w6#"};
@@ -4352,7 +4354,8 @@ local BabbleZone = AtlasLoot_GetLocaleLibBabble("LibBabble-Zone-3.0")
 		{ 20, 45471, "", "=q4=Fate's Clutch", "=ds=#s13#", "", "1%"};
 		{ 21, 45570, "", "=q4=Skyforge Crossbow", "=ds=#w3#", "", "1%"};
 		{ 22, 45470, "", "=q4=Wisdom's Hold", "=ds=#w8#", "", "2%"};
-		{ 23, 45817, "", "=q1=Thorim's Sigil", "=ds=#m3#", "", "3%"};
+		{ 23, 43578, "", "=q4=Нокталар, Клинок Забытой Клятвы", "=ds=#h2#, #w10#", "", "2%"};
+		{ 24, 45817, "", "=q1=Thorim's Sigil", "=ds=#m3#", "", "3%"};
 		{ 28, 70019, "", "=q5=Фрагмент силы Ульдуара", "=ds=#m3#", ""};
 		{ 29, 45038, "", "=q5=Fragment of Val'anyr", "=ds=#m3#", "", "40%"};
 		{ 30, 46017, "", "=q5=Val'anyr, Hammer of Ancient Kings", "=q1=#m4#: =ds=#h1#, #w6#"};
@@ -4442,7 +4445,9 @@ local BabbleZone = AtlasLoot_GetLocaleLibBabble("LibBabble-Zone-3.0")
 		{ 20, 45495, "", "=q4=Conductive Seal", "=ds=#s13#"};
 		{ 21, 45494, "", "=q4=Delirium's Touch", "=ds=#h4#, #w13#"};
 		{ 22, 45620, "", "=q4=Starshard Edge", "=ds=#h3#, #w4#"};
-		{ 23, 45816, "", "=q1=Mimiron's Sigil", "=ds=#m3#", "", "0.16%"};
+		{ 23, 50580, "", "=q4=Тал’Морен, Копьё Забытого Приговора", "=ds=#h1#, #w6#"};
+		{ 24, 50599, "", "=q4=Ордалис, Гнев Каменного Чертога", "=ds=#h2#, #w7#"};
+		{ 25, 45816, "", "=q1=Mimiron's Sigil", "=ds=#m3#", "", "0.16%"};
 		{ 28, 70019, "", "=q5=Фрагмент силы Ульдуара", "=ds=#m3#", ""};
 		{ 29, 45038, "", "=q5=Fragment of Val'anyr", "=ds=#m3#", "", "40%"};
 		{ 30, 46017, "", "=q5=Val'anyr, Hammer of Ancient Kings", "=q1=#m4#: =ds=#h1#, #w6#"};
