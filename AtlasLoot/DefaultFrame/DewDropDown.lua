@@ -278,6 +278,9 @@ AtlasLoot_DewDropDown = {
 		{ AL["World Events"], "WORLDEVENTMENU", "Table" },
 	},
 	[14] = {
+		{ AL["Chroarius"], "Chroarius", "Table" },
+	},
+	[15] = {
 		{ AL["Runes"], "Runes", "Table" },
 	},
 };

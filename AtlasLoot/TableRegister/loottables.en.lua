@@ -1835,3 +1835,11 @@ end
 	AtlasLoot_TableNames["ShamanRunes"] = { AL["ShamanRunes"], "Nozdor" };
 	AtlasLoot_TableNames["MageRunes"] = { AL["MageRunes"], "Nozdor" };
 	AtlasLoot_TableNames["PaladinRunes"] = { AL["PaladinRunes"], "Nozdor" };
+  --
+  	AtlasLoot_TableNames["Chroarius"] = { AL["Chroarius"], "Menu" };
+	AtlasLoot_TableNames["ChroariusHead"] = { AL["ChroariusHead"], "Nozdor" };
+	AtlasLoot_TableNames["ChroariusWeapon"] = { AL["ChroariusWeapon"], "Nozdor" };
+	AtlasLoot_TableNames["ChroariusWeapon2"] = { AL["ChroariusWeapon"], "Nozdor" };
+	AtlasLoot_TableNames["ChroariusWrist"] = { AL["ChroariusWrist"], "Nozdor" };
+	AtlasLoot_TableNames["ChroariusRing"] = { AL["ChroariusRing"], "Nozdor" };
+	AtlasLoot_TableNames["ChroariusRing2"] = { AL["ChroariusRing"], "Nozdor" };

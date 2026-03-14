@@ -11,6 +11,57 @@ local ParseTooltip_Enabled = false;
 local AtlasLootScanTooltip = CreateFrame("GAMETOOLTIP","AtlasLootScanTooltip",nil,"GameTooltipTemplate");
 AtlasLootScanTooltip:SetOwner(UIParent, "ANCHOR_NONE");
 
+local AtlasLootTooltipRefreshFrame = CreateFrame("Frame");
+AtlasLootTooltipRefreshFrame:Hide();
+AtlasLootTooltipRefreshFrame.elapsed = 0;
+AtlasLootTooltipRefreshFrame.button = nil;
+AtlasLootTooltipRefreshFrame.itemID = nil;
+
+local function AtlasLootTooltip_StopAutoRefresh()
+    AtlasLootTooltipRefreshFrame.button = nil;
+    AtlasLootTooltipRefreshFrame.itemID = nil;
+    AtlasLootTooltipRefreshFrame.elapsed = 0;
+    AtlasLootTooltipRefreshFrame:Hide();
+end
+
+local function AtlasLootTooltip_RefreshButton(button)
+    if not button then return; end
+    local oldthis = this;
+    this = button;
+    AtlasLootItem_OnEnter();
+    this = oldthis;
+end
+
+local function AtlasLootTooltip_StartAutoRefresh(button)
+    if (not button) or (not button.itemID) or (button.itemID == 0) or (button.itemID == "") then return; end
+    if type(button.itemID) == "string" and string.sub(button.itemID, 1, 1) == "s" then return; end
+    AtlasLootTooltipRefreshFrame.button = button;
+    AtlasLootTooltipRefreshFrame.itemID = button.itemID;
+    AtlasLootTooltipRefreshFrame.elapsed = 0;
+    AtlasLootTooltipRefreshFrame:Show();
+end
+
+AtlasLootTooltipRefreshFrame:SetScript("OnUpdate", function(self, elapsed)
+    self.elapsed = self.elapsed + elapsed;
+    if self.elapsed < 0.2 then return; end
+    self.elapsed = 0;
+
+    local button = self.button;
+    local itemID = self.itemID;
+    if (not button) or (not itemID) or (button.itemID ~= itemID) or (not button:IsVisible()) or (not button:IsMouseOver()) then
+        AtlasLootTooltip_StopAutoRefresh();
+        return;
+    end
+
+    if GetItemInfo(itemID) ~= nil then
+        local unsafe = getglobal(button:GetName().."_Unsafe");
+        if unsafe then
+            unsafe:Hide();
+        end
+        AtlasLootTooltip_StopAutoRefresh();
+        AtlasLootTooltip_RefreshButton(button);
+    end
+end)
 
 function AtlasLoot_GetEnchantLink(enchantID)
    if not enchantID then return end
@@ -36,6 +87,7 @@ end
 --------------------------------------------------------------------------------
 function AtlasLootItem_OnEnter()
     local isItem;
+    AtlasLootTooltip_StopAutoRefresh();
     AtlasLootTooltip:ClearLines();
     for i=1, 30, 1 do
         if (getglobal("AtlasLootTooltipTextRight"..i) ~= nil) then
@@ -131,11 +183,14 @@ function AtlasLootItem_OnEnter()
                     AtlasLootTooltip:AddLine(" ");
                     AtlasLootTooltip:AddLine(AL["You can right-click to attempt to query the server.  You may be disconnected."], nil, nil, nil, 1);
                     AtlasLootTooltip:Show();
+                    AtlasLootTooltip_StartAutoRefresh(this);
                 end
             --Item Sync tooltips
             elseif( AtlasLoot.db.profile.ItemSyncTT ) then
                 if(GetItemInfo(this.itemID) ~= nil) then
                     getglobal(this:GetName().."_Unsafe"):Hide();
+                else
+                    AtlasLootTooltip_StartAutoRefresh(this);
                 end
                 ItemSync:ButtonEnter();
                 if ( AtlasLoot.db.profile.ItemIDs ) then
@@ -186,6 +241,7 @@ function AtlasLootItem_OnEnter()
                         AtlasLootTooltip:AddLine(" ");
                         AtlasLootTooltip:AddLine(AL["You can right-click to attempt to query the server.  You may be disconnected."], nil, nil, nil, 1);
                         AtlasLootTooltip:Show();
+                        AtlasLootTooltip_StartAutoRefresh(this);
                     end
                 end
             end
@@ -218,6 +274,7 @@ end
 -- Called when the mouse cursor leaves a loot item
 --------------------------------------------------------------------------------
 function AtlasLootItem_OnLeave()
+    AtlasLootTooltip_StopAutoRefresh();
     --Hide the necessary tooltips
     if( AtlasLoot.db.profile.LootlinkTT ) then
         AtlasLootTooltip:Hide();
@@ -257,6 +314,7 @@ function AtlasLootItem_OnClick(arg1)
         --If shift-clicked, link in the chat window
         if(arg1=="RightButton" and not iteminfo and this.itemID ~= 0) then
             AtlasLootTooltip:SetHyperlink("item:"..this.itemID..":0:0:0:0:0:0:0");
+            AtlasLootTooltip_StartAutoRefresh(this);
             if not AtlasLoot.db.profile.ItemSpam then
                 DEFAULT_CHAT_FRAME:AddMessage(AL["Server queried for "]..color.."["..name.."]".."|r"..AL[".  Right click on any other item to refresh the loot page."]);
             end

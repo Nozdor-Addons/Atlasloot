@@ -354,8 +354,8 @@ if AL then
     AL["Ruins of Ahn'Qiraj Sets"] = "Комплекты из Руин Ан'Киража";
     AL["Temple of Ahn'Qiraj Sets"] = "Комплекты из Храма Ан'Киража";
     AL["Tabards"] = "Накидки";
-    AL["Tier 1/2 Sets"] = "Комплекты: Тир 1/2";
-    AL["Tier 1/2/3 Sets"] = "Комплекты: Тир 1/2/3";
+    AL["Tier 1/2 Sets"] = "Комплекты: 2";
+    AL["Tier 1/2/3 Sets"] = "Комплекты: 2/3";
     AL["Tier 3 Sets"] = "Комплект Тира 3";
     AL["Tier 4 Sets"] = "Комплекты: Тир 4";
 	AL["Tier 5 Sets"] = "Комплекты: Тир 5";
@@ -449,6 +449,11 @@ if AL then
     AL["MageRunes"] = "Руны маг";
     AL["PaladinRunes"] = "Руны паладин";
 
+    AL["Chroarius"] = "Хронарий";
+    AL["ChroariusHead"] = "Шлем";
+    AL["ChroariusWeapon"] = "Оружие";
+    AL["ChroariusWrist"] = "Запястья";
+    AL["ChroariusRing"] = "Кольца";
 
 	-- T4DQ
 	AL["T4DQDeathKnightDPS"] = "ДК - Нечестивость";
