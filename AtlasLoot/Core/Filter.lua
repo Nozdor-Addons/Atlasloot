@@ -87,7 +87,8 @@ local ClassHides = {
 	["SHAMAN"] = {["Armor"] = {true,true,true,false},["WeaponsMeele"] = {true,true,true,true,true,false,true,false,true},["WeaponsMeeleTwoHand"] = {true,true,false},["WeaponsRanged"] = {false,false,false,false,false},["Relics"] = {false,true,false,false},["Other"] = {true,true,true,true}},
 	["WARLOCK"] = {["Armor"] = {true,false,false,false},["WeaponsMeele"] = {true,true,false,true,false,false,false,true,false},["WeaponsMeeleTwoHand"] = {false,false,false},["WeaponsRanged"] = {true,false,false,false,false},["Relics"] = {false,false,false,false},["Other"] = {true,true,true,true}},
 	["WARRIOR"] = {["Armor"] = {true,true,true,true},["WeaponsMeele"] = {true,true,true,true,true,true,true,true,true},["WeaponsMeeleTwoHand"] = {true,true,true},["WeaponsRanged"] = {false,true,true,true,true},["Relics"] = {false,false,false,false},["Other"] = {true,true,true,true}},
-	["DEATHKNIGHT"] = {["Armor"] = {true,true,true,true},["WeaponsMeele"] = {true,false,true,false,true,true,false,true,false},["WeaponsMeeleTwoHand"] = {true,false,true},["WeaponsRanged"] = {false,false,false,false,false},["Relics"] = {false,false,false,true},["Other"] = {true,true,true,true}}
+	["DEATHKNIGHT"] = {["Armor"] = {true,true,true,true},["WeaponsMeele"] = {true,false,true,false,true,true,false,true,false},["WeaponsMeeleTwoHand"] = {true,false,true},["WeaponsRanged"] = {false,false,false,false,false},["Relics"] = {false,false,false,true},["Other"] = {true,true,true,true}},
+	["DEMONHUNTER"] = {["Armor"] = {true,true,false,false},["WeaponsMeele"] = {false,false,false,false,true,false,false,true,true},["WeaponsMeeleTwoHand"] = {false,false,false},["WeaponsRanged"] = {false,false,false,false,false},["Relics"] = {false,false,false,false},["Other"] = {true,true,true,true}}
 }
 
 -- **********************************************************************
@@ -363,7 +364,7 @@ function AtlasLoot_CreateFilterOptions()
 			for k,v in pairs(FilterTable) do
 				if type(v) == "table" then
 					for i,j in pairs(FilterTable[k]) do
-						if ClassHides[playerClass][k][i] == false then
+						if (ClassHides[playerClass] or ClassHides.WARRIOR)[k][i] == false then
 							AtlasLootFilterDB[k][j] = false
 						else
 							AtlasLootFilterDB[k][j] = true

@@ -7,6 +7,7 @@
 ## X-Credits: Mysterium, за модификацию Аддона 
 ## X-Category: Карта
 ## X-License: GPL v2
+## X-Nozdor-DemonHunter: 1
 ## X-Embeds: Ace3, DewdropLib, FuBarPlugin-2.0, LibBabble-Boss-3.0, LibBabble-Faction-3.0, LibBabble-Inventory-3.0, LibBabble-Zone-3.0
 ## Title-deDE: AtlasLoot Enhanced
 ## Notes-deDE: Zeigt mögliche Beute von Bossen
